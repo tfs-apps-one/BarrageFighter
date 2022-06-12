@@ -19,6 +19,7 @@ public abstract class BaseObject {
         Bullet,
         Missile,
         Boss,
+        Object,
     }
     static final float MOVE_WEIGHT = 3.0f;
     //    static final float MOVE_WEIGHT = 3.0f;

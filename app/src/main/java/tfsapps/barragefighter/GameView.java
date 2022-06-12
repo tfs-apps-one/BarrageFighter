@@ -32,6 +32,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     //    private static final int MISSILE_LAUNCH_WEIGHT = 50;
     private static final int MISSILE_LAUNCH_WEIGHT = 150;
+    private static final int OBJECT_LAUNCH_WEIGHT = 150;
     private static final long FPS = 60;
 
     private static final float SCORE_TEXT_SIZE = 60.0f;
@@ -47,6 +48,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private City city;
     private final List<BaseObject> missileList = new ArrayList<BaseObject>();
     private final List<BaseObject> bulletList = new ArrayList<BaseObject>();
+    private final List<BaseObject> objectList = new ArrayList<BaseObject>();
+    private final List<BaseObject> object2List = new ArrayList<BaseObject>();
 
     private final Paint paintScore = new Paint();
 
@@ -87,6 +90,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private Bitmap missileBmp;
     private Bitmap bossBmp;
     private Bitmap bossbomBmp;
+    private Bitmap objectBmp;
+    private Bitmap object2Bmp;
     private Bitmap cityBmp;
     private static final int PLAY_OPENING = 0;
     private static final int PLAY_ENEMY = 1;
@@ -242,6 +247,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                     missileBmp = BitmapFactory.decodeResource(getResources(), R.drawable.enemy1);
                 if (bossBmp == null)
                     bossBmp = BitmapFactory.decodeResource(getResources(), R.drawable.boss1);
+                if (objectBmp == null)
+                    objectBmp = BitmapFactory.decodeResource(getResources(), R.drawable.cloud1);
+                if (object2Bmp == null)
+                    object2Bmp = BitmapFactory.decodeResource(getResources(), R.drawable.cloud2);
             } else if (stage / 10 == 2) {
                 if (background == null) background = new BackGround(getContext(), R.drawable.earth);
                 enemy_hp = 2;
@@ -500,6 +509,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
         drawObjectList(canvas, bulletList, width, height);
 
+        drawObjectList(canvas, objectList, width, height);
+
+        drawObjectList(canvas, object2List, width, height);
+
         /* ヒット判定 */
         boolean ishits = false;
         /* enemy */
@@ -694,7 +707,17 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                         launchMissile();
                     }
                 }
+
+                //オブジェクト作成　小さい
+                if (rand.nextInt(OBJECT_LAUNCH_WEIGHT-30) == 0) {
+                    launchObject();
+                }
+                //オブジェクト作成　大きい
+                if (rand.nextInt(OBJECT_LAUNCH_WEIGHT) == 0) {
+                    launchObject2();
+                }
             }
+
         }
 
         /* 町 */
@@ -816,6 +839,34 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         float alignX = (toX - fromX) / (float) getHeight();
         boss = new Boss(bossBmp, fromX, alignX, fromY, boss_hp, boss_speed);
     }
+
+    /* オブジェクト描画処理（雲、隕石） */
+    private void launchObject() {
+        int fromX = rand.nextInt(getWidth()-objectBmp.getWidth());
+        int toX = rand.nextInt(getWidth()-objectBmp.getWidth());
+//        int fromY = rand.nextInt(150);
+        int objsp = rand.nextInt(2);
+        int fromY = 0;
+
+//        float alignX = (toX - fromX) / (float) getHeight();
+        float alignX = ((toX - fromX)/2) / (float) getHeight();
+        MyObject myObject = new MyObject(objectBmp, fromX, alignX, fromY, enemy_hp, objsp);
+        objectList.add(myObject);
+    }
+    /* オブジェクト描画処理（雲、隕石） */
+    private void launchObject2() {
+        int fromX = rand.nextInt(getWidth()-object2Bmp.getWidth());
+        int toX = rand.nextInt(getWidth()-object2Bmp.getWidth());
+//        int fromY = rand.nextInt(150);
+        int objsp = rand.nextInt(2);
+        int fromY = 0;
+
+//        float alignX = (toX - fromX) / (float) getHeight();
+        float alignX = ((toX - fromX)/2) / (float) getHeight();
+        MyObject myObject = new MyObject(object2Bmp, fromX, alignX, fromY, enemy_hp, objsp);
+        objectList.add(myObject);
+    }
+
 
 /*----------------------------------------------------------
 	描画処理　DRAW ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
