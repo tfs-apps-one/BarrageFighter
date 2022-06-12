@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="tfsapps.barragefighter.MainActivity">
+
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="501dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
+        <CheckBox
+            android:id="@+id/UnitLv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/Attack"
+            android:layout_alignParentEnd="true"
+            android:layout_alignStart="@+id/Attack"
+            android:textColor="#FF0E5D"
+            android:text="Get) New Unit" />
+
+        <CheckBox
+            android:id="@+id/Attack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/BulletNum"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/UnitImage"
+            android:textColor="#FF0E5D"
+            android:text="LvUp) Attack" />
+
+        <CheckBox
+            android:id="@+id/BulletNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/BulletInterval"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/UnitImage"
+            android:textColor="#FF0E5D"
+            android:text="LvUp) Bullet Number" />
+
+        <CheckBox
+            android:id="@+id/BulletSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/BulletInterval"
+            android:layout_toEndOf="@+id/UnitImage"
+            android:textColor="#FF0E5D"
+            android:text="LvUp) Bullet Speed" />
+
+        <Button
+            android:id="@+id/LevelUp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/Menu"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/btn_round2"
+            android:onClick="onLevelUp"
+            android:text="EXECUTE"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/Menu"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/LevelUp"
+            android:layout_marginBottom="60dp"
+            android:background="@drawable/btn_round"
+            android:onClick="onMenu"
+            android:text="MENU"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/SubInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/UnitLv"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_below="@+id/UnitLv"
+            android:layout_marginBottom="10dp"
+            android:layout_toStartOf="@+id/UnitLv"
+            android:text="Info"
+            android:background="#DDDDFF"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/UnitImage"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/LevelUp"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="27dp"
+            app:srcCompat="@drawable/plain1" />
+
+        <CheckBox
+            android:id="@+id/BulletInterval"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/UnitImage"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/UnitImage"
+            android:textColor="#FF0E5D"
+            android:text="LvUp) Fireing Interval" />
+
+        <TextView
+            android:id="@+id/SubInfo2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/UnitLv"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/SubInfo"
+            android:text="info2"
+            android:background="#DDDDFF"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
