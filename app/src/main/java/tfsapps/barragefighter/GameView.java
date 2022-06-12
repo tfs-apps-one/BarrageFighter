@@ -16,7 +16,6 @@ import android.graphics.Paint;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Vibrator;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
