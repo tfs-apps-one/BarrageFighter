@@ -114,6 +114,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     static private int boss_hp = 11;
     static private int boss_speed = 0;
 
+    static private int droid_update = 0;
 
     public interface Callback {
         public void onGameOver(int point, int score, int stage, int finish);
@@ -497,6 +498,16 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         if (droid == null) {
             droid = new Droid(droidBmp, width, height, bullet_num);
         }
+        else{
+            droid_update ++;
+            if (droid_update % 10 == 0){
+                droidBmp = BitmapFactory.decodeResource(getResources(), R.drawable.plain41);
+            }
+            else{
+                droidBmp = BitmapFactory.decodeResource(getResources(), R.drawable.plain42);
+            }
+            droid.droidDisp(droidBmp);
+        }
 
         if (city == null) {
             city = new City(width, height);
@@ -709,11 +720,11 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                 }
 
                 //オブジェクト作成　小さい
-                if (rand.nextInt(OBJECT_LAUNCH_WEIGHT-30) == 0) {
+                if (rand.nextInt(OBJECT_LAUNCH_WEIGHT+80) == 0) {
                     launchObject();
                 }
                 //オブジェクト作成　大きい
-                if (rand.nextInt(OBJECT_LAUNCH_WEIGHT) == 0) {
+                if (rand.nextInt(OBJECT_LAUNCH_WEIGHT*2) == 0) {
                     launchObject2();
                 }
             }

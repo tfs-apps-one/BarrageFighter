@@ -4,6 +4,7 @@ package tfsapps.barragefighter;
  * Created by FURUKAWA on 2017/11/03.
  */
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
@@ -14,7 +15,7 @@ public class Droid extends BaseObject {
 
     private Paint paint = new Paint();
 
-    public final Bitmap bitmap;
+    public Bitmap bitmap;
     //    public final Rect rect;
     public Rect rect;
     final int move_weight = 10;
@@ -49,6 +50,10 @@ public class Droid extends BaseObject {
         xPosition = rect.centerX();
 //        Log.v(">>>>droid", "x=" + xPosition + ", y="+ yPosition + ", reX" + rect.centerX() + ", reY" + rect.centerY() + ", " + left + top + right + bottom);
 
+    }
+
+    public void droidDisp(Bitmap bmp){
+        this.bitmap = bmp;
     }
 
     @Override
