@@ -500,13 +500,17 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         }
         else{
             droid_update ++;
-            if (droid_update % 10 == 0){
-                droidBmp = BitmapFactory.decodeResource(getResources(), R.drawable.plain41);
-            }
-            else{
+            if (droid_update % 2 == 0) {
                 droidBmp = BitmapFactory.decodeResource(getResources(), R.drawable.plain42);
             }
+            else if (droid_update % 3 == 0) {
+                droidBmp = BitmapFactory.decodeResource(getResources(), R.drawable.plain43);
+            }
+            else {
+                droidBmp = BitmapFactory.decodeResource(getResources(), R.drawable.plain41);
+            }
             droid.droidDisp(droidBmp);
+
         }
 
         if (city == null) {
